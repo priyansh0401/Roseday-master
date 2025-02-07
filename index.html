@@ -47,14 +47,36 @@
 </div>
 <span id="prompt">Touch the rose</span>
 
-<audio id="bg-music" autoplay loop>
+<audio id="bg-music" loop>
     <source src="song.mp3" type="audio/mp3">
     Your browser does not support the audio element.
 </audio>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("bg-music");
+
+    // Function to try playing the audio
+    const playAudio = () => {
+        audio.play().then(() => {
+            console.log("Audio is playing 🎵");
+        }).catch(error => {
+            console.warn("Autoplay blocked! Waiting for user interaction.");
+        });
+    };
+
+    // Try playing immediately
+    playAudio();
+
+    // Ensure playback on user interaction if blocked
+    document.addEventListener("click", playAudio, { once: true });
+});
+</script>
+
+
 
 <h1>By Your one and only Mad head 😌✨</h1>
-<p><a href="https://wa.me/918767506459?text=awesome one ✨" target="_blank">For feedback</a></p>
+
 </body>
 
 </html>
